@@ -7,7 +7,9 @@ class ZingalaServiceProvider extends ServiceProvider
 {
     public function register()
     {
-
+        $this->app->singleton(Zingala::class, function ($app) {
+            return new Zingala($app['config']['unipay']);
+        });
     }
 
     public function boot()
